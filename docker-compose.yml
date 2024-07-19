@@ -1,0 +1,38 @@
+version: "1.1"
+
+services:
+  mysql:
+    image: mysql
+    restart: always
+    container_name: db-mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: path
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: securepassword
+    volumes:
+      - ./mysql/dump:/docker-entrypoint-initdb.d
+    networks:
+      - newnet
+
+  backend:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    container_name: nestjs-app
+    ports:
+      - "3000:3000"
+    environment:
+      DB_TYPE: "mysql"
+      DB_HOST: "db-mysql"
+      DB_PORT: "3306"
+      DB_USERNAME: "dbuser"
+      DB_PASSWORD: "securepassword"
+    networks:
+      - newnet
+
+networks:
+  newnet:
+    name: full_stack_network
