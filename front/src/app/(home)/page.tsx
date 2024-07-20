@@ -1,3 +1,4 @@
+import { SignInWidget } from "@/modules/auth/components/sign-in.widget";
 import ThemeSwitcher from "@/modules/common/theme-switcher";
 
 export default function Home() {
@@ -5,6 +6,7 @@ export default function Home() {
     <main>
       Main page
       <ThemeSwitcher />
+      <SignInWidget />
     </main>
   );
 }
