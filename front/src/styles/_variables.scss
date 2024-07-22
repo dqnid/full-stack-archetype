@@ -1,8 +1,18 @@
 $default-font-size: 1.6rem;
 
-$color-primary: #ff7730;
+$color-primary: var(--color-primary);
+$color-primary-light: var(--color-primary-light);
+$color-primary-dark: var(--color-primary-dark);
+$color-primary-rgb: var(--color-primary-rgb);
+$color-primary-light-rgb: var(--color-primary-light-rgb);
+$color-primary-dark-rgb: var(--color-primary-dark-rgb);
+
 $color-secondary: #ff7730;
 $color-background: var(--color-white);
 $color-foreground: var(--color-black);
 
 $color-white: var(--color-white);
+
+$color-grey-light: var(--color-grey-light);
+$color-grey-medium: var(--color-grey-medium);
+$color-grey-dark: var(--color-grey-dark);

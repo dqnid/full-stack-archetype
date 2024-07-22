@@ -1,1 +1,1 @@
-export { ApplicationLayout as default } from "@/modules/common/layouts/application.layout";
+export { ApplicationLayout as default } from "@/modules/common/layouts/application/application.layout";

@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { ApplicationProvider } from "../providers/application.provider";
+import { ApplicationProvider } from "../../providers/application.provider";
 
 export const ApplicationLayout: React.FC<PropsWithChildren> = ({
   children,

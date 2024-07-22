@@ -1,12 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 // For variable definition
 :root {
   --color-white: #fafafa;
   --color-black: #101010;
+
+  --color-grey-dark: #495057;
+  --color-grey-medium: #adb5bd;
+  --color-grey-light: #dee2e6;
+
+  --color-primary: #9c89b8;
+  --color-primary-light: #b8bedd;
+  --color-primary-dark: #56577d;
+  --color-primary-rgb: 156, 137, 184;
+  --color-primary-light-rgb: 184, 190, 221;
+  --color-primary-dark-rgb: 86, 87, 125;
 }
 
 [data-theme="dark"] {
   --color-white: #101010;
   --color-black: #fafafa;
+
+  --color-grey-dark: #dee2e6;
+  --color-grey-medium: #adb5bd;
+  --color-grey-light: #495057;
+
+  --color-primary: #56577d;
+  --color-primary-light: #b8bedd;
+  --color-primary-dark: #9c89b8;
+  --color-primary-rgb: 86, 87, 125;
+  --color-primary-light-rgb: 184, 190, 221;
+  --color-primary-dark-rgb: 156, 137, 184;
 }
 
 *,
@@ -18,6 +42,7 @@
 }
 
 html {
+  font-family: "Roboto", sans-serif;
   max-width: 100vw;
   overflow-x: hidden;
 

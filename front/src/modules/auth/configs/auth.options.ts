@@ -16,7 +16,6 @@ export const authOptions: AuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        console.log("__credentials", credentials);
         const user: User = {
           id: credentials?.password ?? "asdf",
           role: "admin",
@@ -26,7 +25,7 @@ export const authOptions: AuthOptions = {
             accessToken: credentials?.password ?? "asdf",
           },
         };
-        return user;
+        return credentials?.password === "secure-password" ? user : null;
       },
     }),
   ],
