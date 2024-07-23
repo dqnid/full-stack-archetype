@@ -1,4 +1,4 @@
-import { AuthOptions, User } from "next-auth";
+import { AuthOptions, Role, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions: AuthOptions = {
@@ -16,16 +16,50 @@ export const authOptions: AuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
+        const response = await fetch("http://localhost:3000/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: credentials?.username,
+            password: credentials?.password,
+          }),
+        });
+
+        type LoginResponse = {
+          access_token: string;
+        };
+
+        if (response.status < 200 || response.status > 399) return null;
+
+        const response_body = (await response.json()) as LoginResponse;
+
+        type TokenPayload = {
+          sub: string;
+          username: string;
+          roles: Role[];
+          iat: number;
+          exp: number;
+        };
+
+        const token_payload = JSON.parse(
+          atob(response_body.access_token.split(".")[1]),
+        ) as TokenPayload;
+
         const user: User = {
-          id: credentials?.password ?? "asdf",
-          role: "admin",
-          image: "none",
-          name: credentials?.username,
+          id: token_payload.username,
+          roles: token_payload.roles,
+          image: "https://randomuser.me/api/portraits/women/92.jpg",
+          name: token_payload.username,
           apiSession: {
-            accessToken: credentials?.password ?? "asdf",
+            accessToken: response_body.access_token,
           },
         };
-        return credentials?.password === "secure-password" ? user : null;
+
+        console.log("__loged:", user);
+
+        return user;
       },
     }),
   ],

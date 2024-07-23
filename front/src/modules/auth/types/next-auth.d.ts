@@ -9,7 +9,7 @@ declare module "next-auth" {
   }
   interface User {
     id: string;
-    role: Role;
+    roles: Role[];
     image?: string;
     name?: string;
     apiSession?: ApiSession;

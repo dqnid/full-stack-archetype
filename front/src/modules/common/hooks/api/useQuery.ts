@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { timedFetch } from "../../utils/timedFetch";
+import { useSession } from "next-auth/react";
 
 type QueryReturn<T> = {
   data?: T;
@@ -25,6 +26,12 @@ export function useQuery<DataType>({
   }>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
+
+  const session = useSession();
+  const token = session.data?.apiSession?.accessToken;
+  if (token) {
+    options.headers = { ...options.headers, Authorization: "Bearer " + token };
+  }
 
   useEffect(() => {
     setIsLoading(true);
