@@ -5,14 +5,18 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/entities/user.entity';
 import { ConfigModule } from '@nestjs/config';
+import { ExampleModule } from './example/example.module';
+
+import { User } from './users/entities/user.entity';
+import { Example } from './example/entities/example.entity';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     AuthModule,
     UsersModule,
+    ExampleModule,
     ThrottlerModule.forRoot([
       {
         ttl: 10000,
@@ -26,7 +30,7 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_MAIN,
-      entities: [User],
+      entities: [User, Example],
       synchronize: false,
       connectTimeout: 20000,
     }),
