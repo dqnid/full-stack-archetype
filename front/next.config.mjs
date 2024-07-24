@@ -9,6 +9,16 @@ const nextConfig = {
     prependData: `@import "@/styles/variables";`,
     includePaths: [path.join("@", "styles")],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

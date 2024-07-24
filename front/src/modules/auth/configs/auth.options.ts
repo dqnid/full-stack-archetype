@@ -6,7 +6,7 @@ export const authOptions: AuthOptions = {
     strategy: "jwt",
   },
   pages: {
-    signIn: "/auth/sign-in",
+    signIn: "/auth/log-in",
   },
   providers: [
     CredentialsProvider({
@@ -50,7 +50,7 @@ export const authOptions: AuthOptions = {
         const user: User = {
           id: token_payload.username,
           roles: token_payload.roles,
-          image: "https://randomuser.me/api/portraits/women/92.jpg",
+          image: "https://picsum.photos/200/300",
           name: token_payload.username,
           apiSession: {
             accessToken: response_body.access_token,

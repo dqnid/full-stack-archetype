@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import "@/styles/main.scss";
+import { ApplicationProvider } from "../../providers/application.provider";
 
 export const metadata: Metadata = {
-  title: "Personal finance - Home",
-  description: "Manage your money blablabla",
+  title: "Full stack archetype",
+  description:
+    "This is a full stack archetype supported in NextJS, NestJS and mysql",
 };
 
 export function RootLayout({
@@ -13,7 +15,9 @@ export function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ApplicationProvider>{children}</ApplicationProvider>
+      </body>
     </html>
   );
 }

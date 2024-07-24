@@ -1,18 +1,18 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-import styles from "./sign-in.module.scss";
+import { FormEvent, useEffect, useState } from "react";
+import styles from "./log-in.module.scss";
 
 import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-type SingInWidgetsProps = {
+type LogInWidgetsProps = {
   afterSuccess?: Function;
 };
 
-export const SignInWidget: React.FC<SingInWidgetsProps> = ({
-  afterSuccess,
-}) => {
+export const LogInWidget: React.FC<LogInWidgetsProps> = ({ afterSuccess }) => {
   const { data } = useSession();
+  const router = useRouter();
 
   const [loginStatus, setLoginStatus] = useState<
     "idle" | "check" | "confirm" | "error"
@@ -41,9 +41,15 @@ export const SignInWidget: React.FC<SingInWidgetsProps> = ({
     }
   };
 
+  useEffect(() => {
+    if (loginStatus === "confirm") {
+      router.push("/");
+    }
+  }, [loginStatus]);
+
   return (
     <div className={styles.container}>
-      <h1 className={styles["heading"]}>Sign in</h1>
+      <h1 className={styles["heading"]}>Log in</h1>
       <form className={styles.form} onSubmit={submit}>
         <div className={`${styles["form__group"]}`}>
           <label htmlFor="username" className={styles["form__label"]}>
