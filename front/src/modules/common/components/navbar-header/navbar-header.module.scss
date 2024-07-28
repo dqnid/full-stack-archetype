@@ -1,0 +1,25 @@
+.header {
+  position: sticky;
+  top: 1.2rem;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin: 1.2rem;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  padding: 0.4rem 1.8rem;
+  background-color: $color-white;
+  box-shadow: 0 1px 3px rgba($color-grey-10-rgb, 0.3);
+  color: $color-background;
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    font-size: 2.6rem;
+    font-weight: bold;
+  }
+}

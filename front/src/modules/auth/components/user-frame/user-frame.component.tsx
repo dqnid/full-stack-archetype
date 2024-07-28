@@ -1,16 +1,20 @@
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../configs/auth.options";
 import Image from "next/image";
 
 import styles from "./user-frame.module.scss";
+import { getServerSession } from "next-auth";
+import SignInButton from "../sign-in-button";
 
 export async function UserFrame() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
+
+  if (!session) {
+    return <SignInButton />;
+  }
 
   return (
     <div className={styles.frame}>
       <span className={styles.initials}>
-        {getInitialsFromName(session?.user?.name || "")}
+        {getInitialsFromName(session?.user?.name || "00")}
       </span>
       <Image
         className={styles["profile__picture"]}

@@ -7,6 +7,7 @@ export const authOptions: AuthOptions = {
   },
   pages: {
     signIn: "/auth/log-in",
+    signOut: "/",
   },
   providers: [
     CredentialsProvider({
@@ -39,6 +40,7 @@ export const authOptions: AuthOptions = {
           sub: string;
           username: string;
           roles: Role[];
+          picture: string;
           iat: number;
           exp: number;
         };
@@ -50,7 +52,7 @@ export const authOptions: AuthOptions = {
         const user: User = {
           id: token_payload.username,
           roles: token_payload.roles,
-          image: "https://picsum.photos/200/300",
+          image: token_payload.picture,
           name: token_payload.username,
           apiSession: {
             accessToken: response_body.access_token,

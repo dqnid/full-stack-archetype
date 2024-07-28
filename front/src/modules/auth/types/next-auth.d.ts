@@ -2,7 +2,7 @@ import NextAuth, { DefaultSession } from "next-auth";
 import { JWT, DefaultJWT } from "next-auth/jwt";
 
 declare module "next-auth" {
-  type Role = "user" | "admin";
+  type Role = "user" | "manager" | "admin";
   interface ApiSession {
     accessToken: string;
     refreshToken?: string;
@@ -16,6 +16,7 @@ declare module "next-auth" {
   }
 
   interface Session extends DefaultSession {
+    user?: Omit<User, "apiSession">;
     apiSession?: ApiSession;
   }
 }

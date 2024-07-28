@@ -1,0 +1,36 @@
+.frame {
+  list-style: none;
+  min-width: 15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem 0.6rem;
+
+  padding: 1.2rem 1.8rem;
+
+  border-radius: 6px;
+  background-color: $color-foreground;
+  color: $color-background;
+
+  & .user {
+    font-size: 1.6rem;
+
+    &__name {
+    }
+
+    &__roles {
+      list-style: none;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+
+      & .role__chip {
+        padding: 0.4rem 0.6rem;
+
+        border-radius: 4px;
+        background-color: $color-grey-90;
+        color: $color-grey-10;
+      }
+    }
+  }
+}

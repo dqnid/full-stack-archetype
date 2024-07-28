@@ -16,4 +16,7 @@ export class User {
 
   @Column()
   roles: string;
+
+  @Column()
+  picture: string;
 }

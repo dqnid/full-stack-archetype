@@ -9,6 +9,7 @@ export type UserType = {
   username: string;
   password: string;
   roles: Role[];
+  picture: string;
 };
 
 @Injectable()
@@ -29,6 +30,7 @@ export class UsersService {
       username: db_user.username,
       password: db_user.password,
       roles: db_user.roles.split(';') as Role[],
+      picture: db_user.picture,
     };
     console.log(user);
     return user;

@@ -1,1 +1,1 @@
-export { UserDropdown } from "./user-dropdown.component";
+export { UserDropdown as default } from "./user-dropdown.component";

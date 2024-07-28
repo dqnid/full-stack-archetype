@@ -4,6 +4,7 @@ CREATE TABLE user (
     username VARCHAR(50) NOT NULL,
     password VARCHAR(255) NOT NULL,
     roles VARCHAR(255) NOT NULL,
+    picture VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -15,9 +16,9 @@ CREATE TABLE example (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO user (username, password, roles) VALUES 
-('dqnid', '$2b$10$DDGh9u4yiTY9FJx2faFPlucBbTB6Y3i8YkH7AEztcpeaKv08AjdrW', 'admin'),
-('albi', '$2b$10$DDGh9u4yiTY9FJx2faFPlucBbTB6Y3i8YkH7AEztcpeaKv08AjdrW', 'admin');
+INSERT INTO user (username, password, roles, picture) VALUES 
+('dqnid', '$2b$10$DDGh9u4yiTY9FJx2faFPlucBbTB6Y3i8YkH7AEztcpeaKv08AjdrW', 'user;manager;admin', 'https://picsum.photos/200/300'),
+('albi', '$2b$10$DDGh9u4yiTY9FJx2faFPlucBbTB6Y3i8YkH7AEztcpeaKv08AjdrW', 'admin', NULL);
 
 INSERT INTO example (name, description, image) VALUES 
 ('dqnid', 'This is a short text stored in a mysql database', 'https://picsum.photos/200/300'),

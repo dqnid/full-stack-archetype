@@ -1,5 +1,3 @@
-import ThemeSwitcher from "@/modules/common/theme-switcher";
-
 export default function Home() {
   return (
     <main
@@ -12,7 +10,6 @@ export default function Home() {
       }}
     >
       Main page
-      <ThemeSwitcher />
     </main>
   );
 }
