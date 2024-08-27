@@ -10,16 +10,37 @@
   box-sizing: border-box;
   border-radius: 8px;
 
-  padding: 0.4rem 1.8rem;
+  padding: 0.6rem 2rem;
   background-color: var(--color-white);
   box-shadow: 0 1px 3px rgba(var(--color-grey-10-rgb), 0.3);
   color: var(--color-background);
 
+  --header-item-height: 4.5rem;
+
   .logo {
     display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
     align-items: center;
 
     font-size: 2.6rem;
     font-weight: bold;
+
+    height: var(--header-item-height);
+    width: auto;
+
+    & > img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    & > h1 {
+      font-size: 1.4rem;
+    }
+  }
+
+  & > nav {
+    display: flex;
   }
 }

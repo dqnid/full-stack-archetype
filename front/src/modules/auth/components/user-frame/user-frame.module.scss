@@ -7,7 +7,7 @@
   border-radius: 50%;
   overflow: hidden;
 
-  border: 1px solid var(--color-grey-30);
+  box-shadow: 1px 1px 3px var(--color-grey-30);
   box-sizing: border-box;
 
   & > span {

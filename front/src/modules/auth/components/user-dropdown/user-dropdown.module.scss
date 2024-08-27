@@ -3,11 +3,10 @@
   overflow: visible;
 
   .avatar__container {
-    width: 6rem;
-    height: 6rem;
+    height: var(--header-item-height, 4rem);
+    width: var(--header-item-height, 4rem);
 
-    font-size: 3.4rem;
-    padding: 0.5rem;
+    font-size: 3.2rem;
   }
 
   .dropdown__container {
