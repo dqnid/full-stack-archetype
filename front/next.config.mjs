@@ -6,7 +6,7 @@ const nextConfig = {
    * https://nextjs.org/docs/app/building-your-application/styling/sass
    */
   sassOptions: {
-    prependData: `@import "@/styles/variables";`,
+    // optional: prependData: `@import "@/styles/variables";`,
     includePaths: [path.join("@", "styles")],
   },
   images: {

@@ -12,16 +12,18 @@
   border-radius: 0.4rem;
   background-image: linear-gradient(
     16deg,
-    rgba($color-primary-90-rgb, 0.3),
-    rgba($color-primary-90-rgb, 0.2)
+    rgba(var(--color-primary-rgb), 0.3),
+    rgba(var(--color-primary-rgb), 0.2)
   );
+
+  background-color: rgba(var(--color-test), 0.4);
 
   .heading {
     font-size: 3.4rem;
     text-align: center;
     background-color: #e5e5f7;
     opacity: 0.8;
-    text-shadow: rgba($color-grey-10, 0.3);
+    text-shadow: rgba(var(--color-grey-10), 0.3);
 
     padding: 2rem 4rem 2rem;
 
@@ -30,14 +32,14 @@
       repeating-conic-gradient(
           from 30deg,
           #0000 0 120deg,
-          $color-white 0 180deg
+          var(--color-white) 0 180deg
         )
         calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
       repeating-conic-gradient(
         from 30deg,
-        $color-grey-30 0 60deg,
-        $color-grey-90 0 120deg,
-        $color-white 0 180deg
+        var(--color-grey-30) 0 60deg,
+        var(--color-grey-90) 0 120deg,
+        var(--color-white) 0 180deg
       );
     background-size: var(--s) calc(var(--s) * 0.577);
   }
@@ -61,7 +63,7 @@
       font-size: inherit;
       margin-left: 0.8em;
 
-      color: $color-grey-10;
+      color: var(--color-grey-10);
       transition: all 0.3s;
     }
 
@@ -69,9 +71,9 @@
       font-size: inherit;
       padding: 0.8em;
 
-      color: $color-foreground;
+      color: var(--color-foreground);
 
-      background: rgba($color-primary-90-rgb, 0.5);
+      background: rgba(var(--color-primary-rgb), 0.5);
       border: none;
       border-bottom: 2px solid transparent;
       border-radius: 2px;
@@ -79,13 +81,13 @@
       transition: all 0.2s;
 
       &::placeholder {
-        color: $color-grey-10;
+        color: var(--color-grey-10);
       }
 
       &:focus {
         outline: none;
-        border-bottom: 2px solid $color-primary;
-        box-shadow: 0 1px 4px rgba($color-primary-dark-rgb, 0.3);
+        border-bottom: 2px solid var(--color-primary);
+        box-shadow: 0 1px 4px rgba(var(--color-primary-dark-rgb), 0.3);
       }
     }
 
@@ -104,15 +106,15 @@
         border-radius: 2px;
 
         border: none;
-        background-color: $color-primary;
-        color: $color-foreground;
+color: var(--color-foreground);
+        background-color: var(--color-primary);
 
         transition: all 0.2s;
 
         &:hover {
           cursor: pointer;
           transform: translateY(-2px);
-          box-shadow: 0 2px 6px rgba($color-primary-dark-rgb, 0.4);
+          box-shadow: 0 2px 6px rgba(var(--color-primary-dark-rgb), 0.4);
         }
 
         &:active {

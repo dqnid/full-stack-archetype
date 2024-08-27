@@ -8,8 +8,8 @@
   padding: 1.2rem 1.8rem;
 
   border-radius: 6px;
-  background-color: $color-foreground;
-  color: $color-background;
+  background-color: var(--color-foreground);
+  color: var(--color-background);
 
   & .user {
     font-size: 1.6rem;
@@ -28,8 +28,8 @@
         padding: 0.4rem 0.6rem;
 
         border-radius: 4px;
-        background-color: $color-grey-90;
-        color: $color-grey-10;
+        background-color: var(--color-grey-90);
+        color: var(--color-grey-10);
       }
     }
   }

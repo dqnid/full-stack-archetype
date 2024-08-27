@@ -20,6 +20,7 @@
   --color-primary-dark-rgb: 86, 87, 125;
 }
 
+
 [data-theme="dark"] {
   --color-white: #101010;
   --color-black: #fafafa;
@@ -65,8 +66,8 @@ html {
 body {
   box-sizing: border-box;
 
-  background-color: $color-background;
-  color: $color-foreground;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
 
 a {
@@ -75,6 +76,6 @@ a {
 }
 
 ::selection {
-  background-color: $color-primary;
-  color: $color-white;
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }

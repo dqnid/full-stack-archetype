@@ -11,9 +11,9 @@
   border-radius: 8px;
 
   padding: 0.4rem 1.8rem;
-  background-color: $color-white;
-  box-shadow: 0 1px 3px rgba($color-grey-10-rgb, 0.3);
-  color: $color-background;
+  background-color: var(--color-white);
+  box-shadow: 0 1px 3px rgba(var(--color-grey-10-rgb), 0.3);
+  color: var(--color-background);
 
   .logo {
     display: flex;
