@@ -49,8 +49,16 @@ export const LogInWidget: React.FC<LogInWidgetsProps> = ({ afterSuccess }) => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles["heading"]}>Log in</h1>
-      <form className={styles.form} onSubmit={submit}>
+      <div className={styles["side__illustration"]}>
+        <h1>
+          Welcome to this <span>page!</span>
+        </h1>
+        <h4>Use your credentials to log-in</h4>
+      </div>
+      <form
+        className={`${styles.form} ${loginStatus === "error" && styles["form--error"]} ${loginStatus === "check" && styles["form--loading"]}`}
+        onSubmit={submit}
+      >
         <div className={`${styles["form__group"]}`}>
           <label htmlFor="username" className={styles["form__label"]}>
             username
@@ -78,8 +86,17 @@ export const LogInWidget: React.FC<LogInWidgetsProps> = ({ afterSuccess }) => {
           />
         </div>
         <div className={styles["form__actions"]}>
+          <div className={styles["form__message"]}>
+            {loginStatus === "error" ? (
+              <p className={styles["form__message--wrong"]}>
+                Wrong credentials, try again
+              </p>
+            ) : (
+              <>Loading...</>
+            )}
+          </div>
           <button type="submit" className={styles["submit__button"]}>
-            Submit
+            Log-in
           </button>
         </div>
       </form>
