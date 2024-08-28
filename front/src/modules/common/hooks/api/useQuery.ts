@@ -12,7 +12,7 @@ type QueryReturn<T> = {
 type QueryInput = {
   url: string;
   options: RequestInit;
-  timeout: number;
+  timeout?: number;
 };
 
 export function useQuery<DataType>({
@@ -36,17 +36,18 @@ export function useQuery<DataType>({
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
-    async () => {
-      const _response = await timedFetch<DataType>(url, options, timeout);
-      if (_response) {
-        setResponse(_response);
+    (async () => {
+      if (session.status !== "loading") {
+        const _response = await timedFetch<DataType>(url, options, timeout);
+        if (_response) {
+          setResponse(_response);
+        } else {
+          setIsError(true);
+        }
         setIsLoading(false);
-      } else {
-        setIsLoading(false);
-        setIsError(true);
       }
-    };
-  }, [url, options, timeout]);
+    })();
+  }, [url, JSON.stringify(options), timeout, session.status]);
 
   return { ...response, isLoading, isError };
 }

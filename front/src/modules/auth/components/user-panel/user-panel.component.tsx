@@ -11,7 +11,9 @@ export function UserPanel() {
       <li className={styles["user__name"]}>{session.data?.user?.name}</li>
       <ul className={styles["user__roles"]}>
         {session.data?.user?.roles.map((role) => (
-          <li className={styles["role__chip"]}>{role}</li>
+          <li key={role} className={styles["role__chip"]}>
+            {role}
+          </li>
         ))}
       </ul>
       <ThemeSwitcher />

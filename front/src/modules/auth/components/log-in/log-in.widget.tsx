@@ -4,15 +4,17 @@ import { FormEvent, useEffect, useState } from "react";
 import styles from "./log-in.module.scss";
 
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type LogInWidgetsProps = {
   afterSuccess?: Function;
 };
 
 export const LogInWidget: React.FC<LogInWidgetsProps> = ({ afterSuccess }) => {
-  const { data } = useSession();
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const callbackUrl = searchParams.get("callbackUrl");
 
   const [loginStatus, setLoginStatus] = useState<
     "idle" | "check" | "confirm" | "error"
@@ -43,7 +45,7 @@ export const LogInWidget: React.FC<LogInWidgetsProps> = ({ afterSuccess }) => {
 
   useEffect(() => {
     if (loginStatus === "confirm") {
-      router.push("/");
+      router.push(callbackUrl ?? "/");
     }
   }, [loginStatus]);
 
