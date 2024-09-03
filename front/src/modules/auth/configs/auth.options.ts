@@ -55,11 +55,10 @@ export const authOptions: AuthOptions = {
           image: token_payload.picture,
           name: token_payload.username,
           apiSession: {
+            exp: token_payload.exp,
             accessToken: response_body.access_token,
           },
         };
-
-        console.log("__loged:", user);
 
         return user;
       },

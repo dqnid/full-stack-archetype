@@ -4,6 +4,7 @@ import { JWT, DefaultJWT } from "next-auth/jwt";
 declare module "next-auth" {
   type Role = "user" | "manager" | "admin";
   interface ApiSession {
+    exp?: number;
     accessToken: string;
     refreshToken?: string;
   }
