@@ -20,12 +20,6 @@ export const ExampleList: React.FC<ExampleListProps> = ({}) => {
     timeout: 4000,
   });
 
-  const one = useQuery<ExampleListType>({
-    url: "http://localhost:3000/example/1",
-    options: { headers: {} },
-    timeout: 4000,
-  });
-
   if (result.isLoading) {
     return <>Loading...</>;
   }
