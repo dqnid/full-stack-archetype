@@ -1,20 +1,20 @@
-import { db_connection, db_query } from "../../db";
+import { db_query } from "../../db";
+import { User } from "./users.types";
 
 class UserService {
   constructor() {}
 
-  async getTestUsers() {
-    const data = await db_connection.execute("select * from user");
-    return data;
+  async getAllUsers(): Promise<User[]> {
+    const data = await db_query("select * from user where id == 1");
+    return data as User[];
   }
 
-  async getAllUsers() {
-    try {
-      const data = await db_query("select * from user where user.id == 3");
-      return { value: data, example: "algo" };
-    } catch (e) {
-      return e;
-    }
+  async getUserByUsername(username: string): Promise<User | null> {
+    const data = await db_query(
+      `select * from user as user WHERE LOWER(username) = LOWER('${username}');`,
+    );
+    console.log("Data:", data);
+    return data.length ? (data[0] as User) : null;
   }
 
   // getUserById(id: number) {

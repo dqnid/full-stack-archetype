@@ -9,9 +9,7 @@ const db_pool = mysql.createPool({
   database: "path",
 });
 
-async function DB_Query<T>(
-  query: string,
-): Promise<Partial<T>[] | ResponseError> {
+async function DB_Query<T>(query: string): Promise<Partial<T>[]> {
   try {
     const [results, _fields] = await db_pool.query(query);
     return results as T[];
