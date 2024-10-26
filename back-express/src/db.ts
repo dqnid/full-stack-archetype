@@ -1,5 +1,5 @@
 import mysql, { QueryError } from "mysql2/promise";
-import { ResponseError } from "./utils/error/response-error.model";
+import { ResponseError } from "./utils/response/response-error.model";
 
 const db_pool = mysql.createPool({
   host: "localhost",

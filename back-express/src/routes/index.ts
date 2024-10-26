@@ -1,6 +1,6 @@
 import express from "express";
 
-import { defaultRoute } from "./defaultRoute";
+import { defaultRoute } from "./default.route";
 import { exampleRoutes } from "./example/example.routes";
 import { userRoutes } from "./users/users.routes";
 
