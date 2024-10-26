@@ -1,7 +1,7 @@
 import { db_query } from "../../db";
 import { User } from "./users.types";
 
-class UserService {
+class UsersService {
   constructor() {}
 
   async getAllUsers(): Promise<User[]> {
@@ -18,4 +18,4 @@ class UserService {
   }
 }
 
-export default UserService;
+export default UsersService;

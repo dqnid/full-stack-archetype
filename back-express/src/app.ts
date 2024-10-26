@@ -10,6 +10,7 @@ if (config.enableCors) {
   app.use(cors());
 }
 
+app.use(express.json());
 // Global middleware
 app.use((req, _res, next) => {
   console.log(`LOG: new ${req.method} request for ${req.url}`);

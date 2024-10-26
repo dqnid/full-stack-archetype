@@ -1,12 +1,12 @@
 import { Router } from "express";
-import UserService from "./users.service";
+import UsersService from "./users.service";
 import { sanitize_user } from "./users.utils";
 import { ResponseSuccess } from "../../utils/response/response-success.model";
 import { ResponseError } from "../../utils/response/response-error.model";
 
 export const userRoutes = Router();
 
-const userService = new UserService();
+const userService = new UsersService();
 
 //TODO: block access to NON-admins or simply comment
 userRoutes.get("/", async (_, res) => {
@@ -35,3 +35,5 @@ userRoutes.get("/:username", async (req, res) => {
     res.send(e);
   }
 });
+
+export { userService };
