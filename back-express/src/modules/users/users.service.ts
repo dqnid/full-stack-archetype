@@ -6,15 +6,25 @@ class UsersService {
 
   async getAllUsers(): Promise<User[]> {
     const data = await db_query("select * from user");
-    return data as User[];
+    const users: User[] = data.map((user: any) => ({
+      ...user,
+      roles: user.roles.split(";"),
+    }));
+    return users;
   }
 
   async getUserByUsername(username: string): Promise<User | null> {
     const data = await db_query(
       `select * from user as user WHERE LOWER(username) = LOWER('${username}');`,
     );
-    console.log("Data:", data);
-    return data.length ? (data[0] as User) : null;
+    if (data.length) {
+      const user = {
+        ...(data[0] as User),
+        roles: (data[0] as any).roles.split(";"),
+      };
+      return user;
+    }
+    return null;
   }
 }
 

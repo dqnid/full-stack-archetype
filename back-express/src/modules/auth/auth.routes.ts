@@ -19,7 +19,7 @@ authRoutes.post("/login", async (req, res) => {
     );
     if (token) {
       res.status(200);
-      res.send(token);
+      res.send({ access_token: token });
     } else {
       res.status(401);
       res.send(new ResponseError(401));
