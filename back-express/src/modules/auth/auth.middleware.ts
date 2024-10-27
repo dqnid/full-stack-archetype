@@ -4,23 +4,22 @@ import { Role } from "../users/users.types";
 import { ResponseError } from "../../utils/response/response-error.model";
 import config from "../../config";
 
-type Permissions = {
-  roles: Array<Role>;
-  resource: string;
-  actions: Array<"get" | "put" | "post" | "delete" | "config">;
-};
-
 async function authorization(req: Request, res: Response, next: NextFunction) {
   const resource = req.url.replace(config.baseRoute, "");
-  const isPublic = !!authorizationTable
-    .find((permission) => permission.resource.startsWith(resource))
-    ?.roles.includes(Role.Public);
-
+  const isPublic = authorizationTable.some((permission) => {
+    const regex = new RegExp(permission.resource);
+    return (
+      regex.test(resource) &&
+      permission.actions.includes(req.method as HttpMethod) &&
+      permission.roles.includes(Role.Public)
+    );
+  });
   if (isPublic) {
     return next();
   }
+
   const authHeader = req.get("authorization");
-  const token = authHeader && authHeader.split(" ")[1];
+  const token = authHeader?.split(" ")[1];
 
   if (token == null) {
     res.status(401);
@@ -29,10 +28,14 @@ async function authorization(req: Request, res: Response, next: NextFunction) {
 
   const user = authService.verifyToken(token);
   if (user && user instanceof Object) {
-    // FIXME: this check is wrong, needs to take into account the resource
-    const authorized = authorizationTable.find((auth) =>
-      user.roles.some((role) => auth.roles.includes(role)),
-    );
+    const authorized = authorizationTable.some((permission) => {
+      const regex = new RegExp(permission.resource);
+      return (
+        regex.test(resource) &&
+        permission.roles.some((role) => user.roles.includes(role)) &&
+        permission.actions.includes(req.method as HttpMethod)
+      );
+    });
     if (authorized) {
       return next();
     }
@@ -41,22 +44,35 @@ async function authorization(req: Request, res: Response, next: NextFunction) {
   return res.send(new ResponseError(401));
 }
 
-// TODO: resource should be a regex
+type HttpMethod =
+  | "GET"
+  | "POST"
+  | "PUT"
+  | "DELETE"
+  | "PATCH"
+  | "OPTIONS"
+  | "HEAD";
+type Permissions = {
+  roles: Array<Role>;
+  resource: string;
+  actions: Array<HttpMethod>;
+};
+
 const authorizationTable: Permissions[] = [
   {
     roles: [Role.Public],
-    resource: "/auth/login",
-    actions: ["post"],
+    resource: "^/auth.*", // begins with /auth (is auth would be ^\/auth$)
+    actions: ["POST"],
   },
   {
     roles: [Role.Admin],
-    resource: "/users",
-    actions: ["get", "put", "post", "delete"],
+    resource: "^/users.*",
+    actions: ["GET", "PUT", "POST", "DELETE"],
   },
   {
     roles: [Role.User],
-    resource: "/users",
-    actions: ["get"],
+    resource: "^/users.*",
+    actions: ["GET"],
   },
 ];
 
