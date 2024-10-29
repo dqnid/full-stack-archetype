@@ -14,6 +14,7 @@ async function authorization(req: Request, res: Response, next: NextFunction) {
       permission.roles.includes(Role.Public)
     );
   });
+
   if (isPublic) {
     return next();
   }
@@ -73,6 +74,11 @@ const authorizationTable: Permissions[] = [
     roles: [Role.User],
     resource: "^/users.*",
     actions: ["GET"],
+  },
+  {
+    roles: [Role.Public],
+    resource: "^/example.*",
+    actions: ["GET", "OPTIONS"],
   },
 ];
 

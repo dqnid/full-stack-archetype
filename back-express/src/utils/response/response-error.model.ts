@@ -12,7 +12,7 @@ const code_error_mapping: Record<number, BasicError> = {
     status: 400,
   },
   401: {
-    code: "Unauthorized",
+    code: "UNAUTHORIZED",
     status: 401,
   },
 };

@@ -12,6 +12,7 @@ if (config.enableCors) {
 }
 
 app.use(express.json());
+
 // Global middleware
 app.use(authorizationMiddleware as any); // TODO: move out of here
 app.use((req, _res, next) => {

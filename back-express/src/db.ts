@@ -2,11 +2,11 @@ import mysql, { QueryError } from "mysql2/promise";
 import { ResponseError } from "./utils/response/response-error.model";
 
 const db_pool = mysql.createPool({
-  host: "localhost",
-  port: 3307,
-  user: "dbuser",
-  password: "securepassword",
-  database: "path",
+  host: process.env.DB_HOST ?? "localhost",
+  port: parseInt(process.env.DB_PORT ?? "3307"),
+  user: process.env.DB_USERNAME ?? "dbuser",
+  password: process.env.DB_PASSWORD ?? "securepassword",
+  database: process.env.DB_MAIN ?? "path",
 });
 
 async function DB_Query<T>(query: string): Promise<Partial<T>[]> {
