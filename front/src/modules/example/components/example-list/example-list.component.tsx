@@ -6,16 +6,19 @@ import Link from "next/link";
 type ExampleListProps = {};
 
 type ExampleListType = {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  created_at: string;
-}[];
+  results: {
+    id: number;
+    name: string;
+    description: string;
+    image: string;
+    created_at: string;
+  }[];
+  count: number;
+};
 
 export const ExampleList: React.FC<ExampleListProps> = ({}) => {
   const result = useQuery<ExampleListType>({
-    url: "http://localhost:3000/example",
+    url: process.env.NEXT_PUBLIC_BACKEND_URL + "/example",
     options: { headers: {} },
     timeout: 4000,
   });
@@ -31,9 +34,9 @@ export const ExampleList: React.FC<ExampleListProps> = ({}) => {
   return (
     <div data-testid="example-list" className={styles.container}>
       <ul>
-        {result.data?.map((example) => {
+        {result.data?.results?.map((example) => {
           return (
-            <Link href={`/examples/${example.id}`}>
+            <Link href={`/examples/${example.id}`} key={example.id}>
               <li key={example.id}>
                 <Image
                   src={example.image}

@@ -16,7 +16,7 @@ type ExampleDetailType = {
 
 export const ExampleDetail: React.FC<ExampleDetailProps> = ({ exampleId }) => {
   const result = useQuery<ExampleDetailType>({
-    url: `http://localhost:3000/example/${exampleId}`,
+    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/example/${exampleId}`,
     options: { headers: {} },
     timeout: 4000,
   });

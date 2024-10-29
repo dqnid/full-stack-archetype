@@ -17,16 +17,19 @@ export const authOptions: AuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        const response = await fetch("http://localhost:3000/auth/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_AUTH_URL + "/auth/login",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: credentials?.username,
+              password: credentials?.password,
+            }),
           },
-          body: JSON.stringify({
-            username: credentials?.username,
-            password: credentials?.password,
-          }),
-        });
+        );
 
         type LoginResponse = {
           access_token: string;
