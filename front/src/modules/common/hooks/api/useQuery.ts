@@ -47,7 +47,7 @@ export function useQuery<DataType>({
         setIsLoading(false);
       }
     })();
-  }, [url, JSON.stringify(options), timeout, session.status]);
+  }, [url, options, timeout, session.status]);
 
   return { ...response, isLoading, isError };
 }

@@ -10,7 +10,7 @@ export const NavbarHeader = (props: PropsWithChildren) => {
   return (
     <header className={styles.header}>
       <Link href={"/"} className={styles.logo}>
-        <img src="/main-logo.svg" />
+        <img src="/main-logo.svg" alt="Main logo" />
         <h1>Your brand</h1>
       </Link>
       <nav>{props.children}</nav>

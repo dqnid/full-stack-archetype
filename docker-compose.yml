@@ -1,6 +1,14 @@
 version: "1.2"
 
 services:
+  # front:
+  #   build:
+  #     context: ./front
+  #     dockerfile: Dockerfile
+  #   container_name: nextjs-app
+  #   ports:
+  #     - "3016:3016"
+  #
   mysql:
     image: mysql
     restart: always
