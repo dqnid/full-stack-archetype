@@ -1,0 +1,8 @@
+#!/bin/sh
+echo -e "\e[35m➤ [COMMIT]\e[0m Checking message\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+# npx commitlint --edit $1
+if [[ $? != 0 ]]; then
+  echo -e "\e[31m➤ [COMMIT]\e[0m Wrong format on message\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+  exit -1
+fi
+echo -e "\e[32m➤ [COMMIT]\e[0m Message ok\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
