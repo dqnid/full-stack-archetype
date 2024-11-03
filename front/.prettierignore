@@ -1,0 +1,6 @@
+# Ignore artifacts:
+.next
+.blueprints
+node_modules
+build
+coverage
