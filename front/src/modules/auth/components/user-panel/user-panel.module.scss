@@ -1,39 +1,39 @@
 .frame {
-  list-style: none;
-  min-width: 15rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.8rem 0.6rem;
+    list-style: none;
+    min-width: 15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem 0.6rem;
 
-  padding: 1.2rem 1.8rem;
+    padding: 1.2rem 1.8rem;
 
-  border-radius: 6px;
-  background-color: var(--color-white);
-  box-shadow: 0 2px 3px rgba(var(--color-grey-10-rgb), 0.2);
-  color: var(--color-background);
+    border-radius: 6px;
+    background-color: var(--color-white);
+    box-shadow: 0 2px 3px rgba(var(--color-grey-10-rgb), 0.2);
+    color: var(--color-background);
 
-  z-index: 10;
+    z-index: 10;
 
-  & .user {
-    font-size: 1.6rem;
+    & .user {
+        font-size: 1.6rem;
 
-    &__name {
+        &__name {
+        }
+
+        &__roles {
+            list-style: none;
+
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+
+            & .role__chip {
+                padding: 0.4rem 0.6rem;
+
+                border-radius: 4px;
+                background-color: var(--color-grey-90);
+                color: var(--color-grey-10);
+            }
+        }
     }
-
-    &__roles {
-      list-style: none;
-
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-
-      & .role__chip {
-        padding: 0.4rem 0.6rem;
-
-        border-radius: 4px;
-        background-color: var(--color-grey-90);
-        color: var(--color-grey-10);
-      }
-    }
-  }
 }

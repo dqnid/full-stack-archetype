@@ -1,26 +1,26 @@
 .container {
-  position: relative;
-  overflow: visible;
+    position: relative;
+    overflow: visible;
 
-  .avatar__container {
-    height: var(--header-item-height, 4rem);
-    width: var(--header-item-height, 4rem);
+    .avatar__container {
+        height: var(--header-item-height, 4rem);
+        width: var(--header-item-height, 4rem);
 
-    font-size: 3.2rem;
-  }
+        font-size: 3.2rem;
+    }
 
-  .dropdown__container {
-    position: absolute;
-    right: 0;
+    .dropdown__container {
+        position: absolute;
+        right: 0;
 
-    opacity: 0;
-    visibility: hidden;
+        opacity: 0;
+        visibility: hidden;
 
-    transition: all 0.2s;
-  }
+        transition: all 0.2s;
+    }
 
-  &:hover > .dropdown__container {
-    opacity: 1;
-    visibility: visible;
-  }
+    &:hover > .dropdown__container {
+        opacity: 1;
+        visibility: visible;
+    }
 }

@@ -5,11 +5,11 @@ import styles from "./log-in.module.scss";
 type LogInWidgetsProps = {};
 
 export const LogInView: React.FC<LogInWidgetsProps> = ({}) => {
-  return (
-    <Suspense>
-      <div className={styles.container}>
-        <LogInWidget />
-      </div>
-    </Suspense>
-  );
+    return (
+        <Suspense>
+            <div className={styles.container}>
+                <LogInWidget />
+            </div>
+        </Suspense>
+    );
 };

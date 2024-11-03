@@ -2,12 +2,12 @@ import { signOut } from "next-auth/react";
 import styles from "./sign-out-button.module.scss";
 
 export const SignOutButton = () => {
-  return (
-    <button
-      className={styles.button}
-      onClick={() => void signOut({ callbackUrl: "/" })}
-    >
-      Sign out
-    </button>
-  );
+    return (
+        <button
+            className={styles.button}
+            onClick={() => void signOut({ callbackUrl: "/" })}
+        >
+            Sign out
+        </button>
+    );
 };
