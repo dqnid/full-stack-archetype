@@ -29,16 +29,24 @@ export function useQuery<DataType>({
 
     const session = useSession();
     const token = session.data?.apiSession?.accessToken;
-    if (token) {
-        options.headers = { ...options.headers, Authorization: "Bearer " + token };
-    }
 
     useEffect(() => {
         setIsLoading(true);
         setIsError(false);
         (async () => {
             if (session.status !== "loading") {
-                const _response = await timedFetch<DataType>(url, options, timeout);
+                let secured_options = JSON.parse(JSON.stringify(options));
+                if (token) {
+                    secured_options.headers = {
+                        ...secured_options.headers,
+                        Authorization: "Bearer " + token,
+                    };
+                }
+                const _response = await timedFetch<DataType>(
+                    url,
+                    secured_options,
+                    timeout,
+                );
                 if (_response) {
                     setResponse(_response);
                 } else {
@@ -47,7 +55,7 @@ export function useQuery<DataType>({
                 setIsLoading(false);
             }
         })();
-    }, [url, options, timeout, session.status]);
+    }, [url, timeout, session.status, JSON.stringify(options)]);
 
     return { ...response, isLoading, isError };
 }
