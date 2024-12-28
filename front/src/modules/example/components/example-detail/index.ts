@@ -1,3 +1,3 @@
-"use client"
+"use client";
 
 export { ExampleDetail } from "./example-detail.component";

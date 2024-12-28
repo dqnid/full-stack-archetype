@@ -3,44 +3,44 @@ import styles from "./example-detail.module.scss";
 import Image from "next/image";
 
 type ExampleDetailProps = {
-  exampleId: number;
+    exampleId: number;
 };
 
 type ExampleDetailType = {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  created_at: string;
+    id: number;
+    name: string;
+    description: string;
+    image: string;
+    created_at: string;
 };
 
 export const ExampleDetail: React.FC<ExampleDetailProps> = ({ exampleId }) => {
-  const result = useQuery<ExampleDetailType>({
-    url: `http://localhost:3000/example/${exampleId}`,
-    options: { headers: {} },
-    timeout: 4000,
-  });
+    const result = useQuery<ExampleDetailType>({
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/example/${exampleId}`,
+        options: { headers: {} },
+        timeout: 4000,
+    });
 
-  if (result.isLoading) {
-    return <>Loading...</>;
-  }
+    if (result.isLoading) {
+        return <>Loading...</>;
+    }
 
-  if (result.isError) {
-    return <>Error</>;
-  }
+    if (result.isError) {
+        return <>Error</>;
+    }
 
-  return (
-    <div data-testid="example-detail" className={styles.container}>
-      <div className={styles["example__card"]}>
-        <Image
-          src={result.data?.image ?? ""}
-          alt="picture"
-          width={130}
-          height={130}
-        />
-        <h3>{result.data?.name}</h3>
-        <p>{result.data?.description}</p>
-      </div>
-    </div>
-  );
+    return (
+        <div data-testid="example-detail" className={styles.container}>
+            <div className={styles["example__card"]}>
+                <Image
+                    src={result.data?.image ?? ""}
+                    alt="picture"
+                    width={130}
+                    height={130}
+                />
+                <h3>{result.data?.name}</h3>
+                <p>{result.data?.description}</p>
+            </div>
+        </div>
+    );
 };

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cd ./front
+echo -e "\e[35m➤ [PRETTIER]\e[0m Formatting front files\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+npx prettier . --write --log-level silent
+
+echo -e "\e[35m➤ [ESLINT]\e[0m Checking front code\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+npx lint-staged --silent
+  echo $?
+if [[ $? != 0 ]]; then
+  echo -e "\e[31m➤ [ESLINT]\e[0m Errors in code\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+  exit -1;
+fi
+echo -e "\e[32m➤ [ESLINT]\e[0m Code ok\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+
+cd ..
