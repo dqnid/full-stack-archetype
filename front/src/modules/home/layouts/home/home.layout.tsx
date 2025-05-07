@@ -1,8 +1,8 @@
 import { PropsWithChildren } from "react";
 
 import styles from "./home.module.scss";
-import NavbarHeader from "../../components/navbar-header";
 import UserDropdown from "@/modules/auth/components/user-dropdown";
+import NavbarHeader from "@/modules/common/components/navbar-header";
 
 export const HomeLayout: React.FC<PropsWithChildren> = ({ children }) => {
     return (
