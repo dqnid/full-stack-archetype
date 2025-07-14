@@ -20,14 +20,14 @@
         "paths": {
             "@/*": ["./src/*"]
         },
-        "typeRoots": ["./src/modules/auth/types"]
+        "typeRoots": ["./node_modules/@types", "./src/modules/auth/types"]
     },
     "include": [
         "next-env.d.ts",
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "src/modules/**/*.d.ts"
-    ],
-    "exclude": ["node_modules"]
+        "src/modules/**/*.d.ts",
+        "./jest.setup.ts"
+    ]
 }

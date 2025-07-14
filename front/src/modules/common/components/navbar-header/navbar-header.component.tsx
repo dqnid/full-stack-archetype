@@ -8,7 +8,7 @@ import { PropsWithChildren } from "react";
  * */
 export const NavbarHeader = (props: PropsWithChildren) => {
     return (
-        <header className={styles.header}>
+        <header className={styles.header} data-testid="navbar-header">
             <Link href={"/"} className={styles.logo}>
                 <img src="/main-logo.svg" alt="Main logo" />
                 <h1>Your brand</h1>

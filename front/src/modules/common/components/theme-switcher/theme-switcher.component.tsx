@@ -12,7 +12,7 @@ export const ThemeSwitcher = () => {
     };
 
     return (
-        <label className="switch">
+        <label className="switch" data-testid="theme-switcher">
             <input type="checkbox" onClick={changeHandler} />
             <span className="slider round"></span>
         </label>
