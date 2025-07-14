@@ -1,9 +1,21 @@
 #!/bin/sh
 
+# Front
 cd ./front
+
+## Tests
+echo -e "\e[35m➤ [JEST]\e[0m Testing front project\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+npm run test
+if [[ $? != 0 ]]; then
+    echo -e "\e[31m➤ [JEST]\e[0m Errors in tests\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+    exit -1;
+fi
+
+## Prettier
 echo -e "\e[35m➤ [PRETTIER]\e[0m Formatting front files\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
 npx prettier . --write --log-level silent
 
+## ESlint
 echo -e "\e[35m➤ [ESLINT]\e[0m Checking front code\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
 npx lint-staged --silent
   echo $?
