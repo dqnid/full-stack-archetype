@@ -10,10 +10,16 @@ if [[ $? != 0 ]]; then
     echo -e "\e[31m➤ [JEST]\e[0m Errors in tests\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
     exit -1;
 fi
+echo -e "\e[32m➤ [JEST]\e[0m Testing ok\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
 
 ## Prettier
 echo -e "\e[35m➤ [PRETTIER]\e[0m Formatting front files\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
 npx prettier . --write --log-level silent
+if [[ $? != 0 ]]; then
+    echo -e "\e[31m➤ [PRETTIER]\e[0m Error while formatting files\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+    exit -1;
+fi
+echo -e "\e[32m➤ [PRETTIER]\e[0m Formatting ok\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
 
 ## ESlint
 echo -e "\e[35m➤ [ESLINT]\e[0m Checking front code\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
