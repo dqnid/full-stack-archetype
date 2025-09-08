@@ -23,8 +23,7 @@ echo -e "\e[32m➤ [PRETTIER]\e[0m Formatting ok\e[37m - \e[33m$(date +"%H:%M:%S
 
 ## ESlint
 echo -e "\e[35m➤ [ESLINT]\e[0m Checking front code\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
-npx lint-staged --silent
-  echo $?
+npx lint-staged -c ./.eslintrc.json -q
 if [[ $? != 0 ]]; then
   echo -e "\e[31m➤ [ESLINT]\e[0m Errors in code\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
   exit -1;
@@ -32,3 +31,23 @@ fi
 echo -e "\e[32m➤ [ESLINT]\e[0m Code ok\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
 
 cd ..
+
+## Commit user verification
+banned_users=("Daniel Heras Something")
+banned_emails=("dani_heras@hotmail.com")
+username=$(git config user.name)
+email=$(git config user.email)
+
+if [[ "${banned_users[@]}" =~ "$username" ]]; then
+    echo -e "\e[31m➤ [GIT]\e[0m Error while verifying the user, you probably suck\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+    exit -1;
+else
+    echo -e "\e[32m➤ [GIT]\e[0m User ok\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+fi
+
+if [[ "${banned_emails[@]}" =~ "$email" ]]; then
+    echo -e "\e[31m➤ [GIT]\e[0m Error while verifying the user email, you probably suck\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+    exit -1;
+else
+    echo -e "\e[32m➤ [GIT]\e[0m Email ok\e[37m - \e[33m$(date +"%H:%M:%S")\e[0m"
+fi
