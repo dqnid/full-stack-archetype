@@ -1,0 +1,14 @@
+{
+  "name": "e2e-testing",
+  "version": "1.0.0",
+  "description": "Archetype End-To-End testing with cypress",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx cypress open"
+  },
+  "author": "Daniel Heras Quesada",
+  "license": "",
+  "devDependencies": {
+    "cypress": "^15.2.0"
+  }
+}
