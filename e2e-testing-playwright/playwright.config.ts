@@ -72,8 +72,8 @@ export default defineConfig({
 
     /* Run your local dev server before starting the tests */
     webServer: {
-        command: 'cd .. && docker-compose up -d',
-        // command: 'cd ../front && npm run dev',
+        // command: 'cd .. && docker-compose up -d',
+        command: 'cd ../front && npm run dev',
         url: 'http://localhost:3016',
         reuseExistingServer: !process.env.CI,
     },

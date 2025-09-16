@@ -28,4 +28,15 @@ describe("Login form", () => {
 
         await expect(page.getByText(/^Wrong credentials.*$/)).toBeVisible();
     })
+
+    test("log in redirects to another page if credentials are correct", async ({ page }) => {
+        await page.goto('http://localhost:3016/');
+        await page.getByRole("textbox", { name: "username" }).fill("dqnid");
+        await page.getByRole("textbox", { name: "password" }).fill("1234");
+
+        const button_element = page.getByRole("button", { name: /Log-in/ })
+        button_element.click();
+
+        await expect(page.getByAltText("Main logo")).toBeVisible();
+    })
 });
