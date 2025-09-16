@@ -60,6 +60,7 @@ export const LogInWidget: React.FC<LogInWidgetsProps> = ({ afterSuccess }) => {
             <form
                 className={`${styles.form} ${loginStatus === "error" && styles["form--error"]} ${loginStatus === "check" && styles["form--loading"]}`}
                 onSubmit={submit}
+                data-testid="login-form"
             >
                 <div className={`${styles["form__group"]}`}>
                     <label htmlFor="username" className={styles["form__label"]}>
