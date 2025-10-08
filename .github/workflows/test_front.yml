@@ -1,8 +1,9 @@
 name: Test front projects
 
 on:
-  push:
+  pull_request:
     branches:
+      - main
       - "feature/**"
       - "bugfix/**"
 
