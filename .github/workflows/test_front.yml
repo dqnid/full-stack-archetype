@@ -1,0 +1,17 @@
+name: Test front projects
+
+on:
+  push:
+    branches:
+      - "feature/**"
+      - "bugfix/**"
+
+jobs:
+  next:
+    name: Next front test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout into git repository
+      uses: actions/checkout@v4
+    - name: Runs front tests
+      run: cd front && npm i && npm run test

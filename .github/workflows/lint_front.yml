@@ -1,0 +1,17 @@
+name: Lint front projects
+
+on:
+  push:
+    branches:
+      - "feature/**"
+      - "bugfix/**"
+
+jobs:
+  next:
+    name: Next front lint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout into git repository
+      uses: actions/checkout@v4
+    - name: Runs front tests
+      run: cd front && npx lint-staged -c ./.eslintrc.json -q
